@@ -1,0 +1,907 @@
+/**
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+@import 'common.less';
+
+#advancedRepoAccordion{
+  .accordion-heading {
+    background-color: #f0f0f0;
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  .accordion-body {
+    .repositories-table {
+      overflow: auto;
+      margin-bottom: 10px;
+      div {
+        float: left;
+        min-height: 1px;
+      }
+      .thead {
+        width: 100%;
+        .th {
+          font-weight: bold;
+        }
+        .first-th {
+          width: 4%;
+        }
+        .os-th {
+          width: 13%;
+        }
+        .name-th {
+          width: 17%;
+        }
+        .url-th {
+          width: 66%;
+        }
+      }
+      .tbody {
+        width: 100%;
+        .trow {
+          width: 100%;
+          border-top: 1px solid #dddddd;
+          padding-top: 10px;
+          .os-td {
+            width: 17%;
+          }
+          .sub-trow {
+            width: 100%;
+            .name-td {
+              width: 16%;
+            }
+            .validation-td {
+              width: 4%;
+            }
+            .url-td {
+              width: 63%;
+              .ember-text-field {
+                width: 100%;
+              }
+            }
+            .clear-td {
+              width: 4%;
+              padding-top: 5px;
+              padding-left: 12px;
+              a {
+                cursor: pointer;
+                text-decoration: none;
+                &.disabled-clear-button {
+                  cursor: default;
+                  .icon-remove-sign {
+                    cursor: default;
+                  }
+                }
+              }
+              .icon-remove-sign {
+                color: #808080;
+              }
+            }
+            .actions-td {
+              width: 10%;
+              padding-top: 5px;
+              a {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+      .textfield-error input {
+        border-color: #b94a48;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      }
+      .disabled-label {
+        color: #808080;
+      }
+    }
+    #skip-validation {
+      .checkbox {
+        margin-left: 3px;
+        margin-right: 8px;
+        margin-top: 0;
+      }
+    }
+  }
+}
+.version-box-popup {
+  .modal{
+    max-height: 563px;
+    max-width: 340px;
+    margin: -250px 0 0 -180px;
+    overflow: visible;
+    .modal-body {
+      padding: 0px 0px;
+      overflow: visible;
+    }
+  }
+  .version-box-in-popup.version-box {
+    padding: 0px 0px;
+    margin: 0px 0px;
+    border: none;
+    .hosts-section {
+      padding-bottom: 16px;
+    }
+  }
+}
+
+#stack-upgrade-page,
+.version-box-popup,
+.install-repo-confirmation,
+.revert-patch-upgrade-confirmation {
+  .versions-slides {
+    overflow-x: auto;
+    padding-bottom: 25px;
+    margin-left: 0;
+    margin-top: 5px;
+    .versions-slides-bar {
+      display: inline-flex;
+    }
+  }
+  .left-menu-table {
+    padding: 10px 0;
+    margin-top: 149px;
+    td.service-display-name {
+      border-top: 2px solid #e4e4e4;
+      border-bottom: 2px solid #e4e4e4;
+    }
+  }
+  .version-box {
+    position: relative;
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #d2d9dd;
+    margin: 15px 15px 0 0;
+    padding: 5px 0;
+    a.not-active:hover {
+      text-decoration: none;
+    }
+    .out-of-sync-badge {
+      background-color: transparent;
+      font-size: 30px;
+      top: -8px;
+      position: absolute;
+      left: -8px;
+      color: orange;
+      z-index: 3;
+      height: 24px;
+      width: 24px;
+      border-radius: 24px;
+      background-color: #fff;
+      &:before{
+        position: relative;
+        top:-4px;
+      }
+    }
+    .state {
+      margin: 15px 0 30px;
+      line-height: 30px;
+      padding-top: 5px;
+      height: 30px;
+      i {
+        color: #fff;
+        font-size: 16px;
+      }
+      i[disabled='disabled'] {
+        color: inherit;
+      }
+      .label {
+        padding: 5px 20px;
+        font-size: 14px;
+      }
+      .btn-group {
+        display: inline-block;
+      }
+      .dropdown-menu {
+        cursor: pointer;
+        text-align: left;
+      }
+    }
+    .installing, .upgrading {
+      margin-top: 10px;
+      padding: 0;
+      .progress {
+        height: 15px;
+        width: 60%;
+        margin: 5px 20%;
+      }
+    }
+    .host-link a {
+      color: #0088cc;
+      font-size: 14px;
+      font-weight: normal;
+    }
+    .version {
+      color: #000;
+      text-align: center;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 20px;
+      padding: 5px 5px 0 5px;
+      margin-bottom: 0;
+      span {
+        margin-left: 20px;
+      }
+      .pull-right .not-active {
+        font-size: 15px;
+        color: #0088cc;
+        line-height: 20px;
+      }
+    }
+    .repository-name {
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+      margin: 0 0px -18px 1px;
+      padding: 1px;
+    }
+    .patch-icon {
+      text-align: center;
+      color: #ff4500;
+      height: 20px;
+      font-size: 14px;
+      margin: 18px 0px -18px 1px;
+      padding: 1px;
+    }
+    .hosts-section {
+      margin-top: 16px;
+      width: 100%;
+      text-align: center;
+      background: #f8f8f8;
+      border-top: 1px solid #e4e4e4;
+      padding-bottom: 4px;
+    }
+    .hosts-section .hosts-bar {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .hosts-section .host-link {
+      font-size: 12px;
+    }
+    .revert-dropdown{
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      .btn {
+        position: relative;
+        top: 3px;
+        float: right;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        .caret{
+          border-top-color: #fff;
+        }
+      }
+      .dropdown-menu{
+        right: 0;
+        cursor: pointer;
+      }
+    }
+  }
+  .version-column {
+    min-height: 500px;
+    min-width: 190px;
+    margin: 15px 7px 0 7px;
+    padding-top: 0;
+    background-color: #efefef;
+    .version-column-display-name {
+      color: #000;
+      text-align: center;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      padding: 5px 5px 0 5px;
+      margin-bottom: 0;
+      min-height: 36px;
+    }
+    .version-column-show-details {
+      text-align: center;
+      font-size: 13px;
+      padding: 5px 5px;
+      margin-bottom: 18px;
+      a {
+        cursor: pointer;
+      }
+    }
+    .patch-icon {
+      margin: 0 0 -5px 0;
+    }
+    .icon-undo {
+      color: #000;
+      padding: 2px 3px;
+      border-radius: 15px;
+      border: 1px solid #000;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .state {
+      margin: 10px 0;
+      .top-label {
+        font-size: inherit;
+        border-radius: 0;
+        width: 100%;
+        display: inline-block;
+        padding: 0;
+        line-height: 35px;
+        height: 30px;
+        position: relative;
+        z-index: 2;
+        &:after,&:before{
+          content: '';
+          position: absolute;
+          top: 100%;
+          width: 100%;
+          height: 100%;
+          background-color: @current-green;
+          z-index: -1;
+        }
+        &:after{
+          left: -49%;
+          transform: rotate(5deg) translate(0,-94%);
+        }
+        &:before {
+          left: 51%;
+          transform: rotate(175deg) translate(0,94%);
+        }
+
+      }
+      .btn-group {
+        display: inline-block;
+        width: 100%;
+        .btn:not(.dropdown-toggle) {
+          width: 81%;
+          border-radius: 0;
+          padding: 5px 5px;
+          min-width: 70px;
+        }
+        .dropdown-toggle {
+          width: 20%;
+          border-radius: 0;
+          padding: 5px 5px;
+          height: 32px;
+        }
+      }
+      .btn {
+        width: 100%;
+        border-radius: 0;
+        padding: 5px 5px;
+        height: 32px;
+        &:focus{
+          background-color: #0044cc;
+        }
+      }
+      .open .dropdown-menu {
+        min-width: 100px;
+        right: 0;
+      }
+    }
+    .state.installing, .state.upgrading {
+      margin-top: 0;
+      margin-bottom: 23px;
+      background-color: #006dcc;
+      height: 32px;
+      line-height: 32px;
+      font-size: 13px;
+      a{
+        color: #fff;
+      }
+      &.attach-top{
+        background-color: transparent;
+        font-size: 14px;
+      }
+    }
+    .state.attach-top {
+      margin: 0;
+      line-height: 20px;
+      padding-top: 0;
+      padding-bottom: 25px;
+      &.overflow{
+        overflow: hidden;
+      }
+    }
+    .services-section {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 4px;
+      .line-separator, .line-separator-bottom{
+        height: 2px;
+        background: #e4e4e4;
+        position: relative;
+        margin: 0px 0px 0px -15px;
+      }
+      .line-separator {
+        top: -7px;
+      }
+      .line-separator-bottom {
+        top: -5px;
+      }
+    }
+    .not-upgradable {
+      padding-left: 10px;
+      margin-right: -20px;
+      cursor: pointer;
+    }
+    .icon-info-sign {
+      color: @blue;
+    }
+    .icon-wrench, .icon-bug {
+      color: @gray;
+    }
+  }
+  .service-version-info {
+    margin-bottom: 14px;
+    text-align: center;
+    span.label {
+      padding: 5px 15px;
+      background-color: #a3a3a3;
+      z-index: 100;
+      position: relative;
+    }
+    span.label.available {
+      background-color: @current-green;;
+    }
+  }
+}
+
+.revert-patch-upgrade-confirmation {
+  table {
+    td, th {
+      padding: 5px 15px;
+    }
+  }
+}
+
+.install-repo-confirmation {
+  .available-services-list {
+    margin: 10px 0 30px;
+    .service-version-info {
+      text-align: left;
+      margin-bottom: 20px;
+      .span1 {
+        width: 90px;
+      }
+    }
+  }
+}
+
+#stack-upgrade-dialog,
+#stack-upgrade-record-dialog {
+  margin-top: 5px;
+  .details-box {
+    padding: 5px;
+    margin-top: 5px;
+    input[type="checkbox"] {
+      margin: 0;
+    }
+    .message {
+      line-height: 30px;
+    }
+  }
+  .button-row {
+    text-align: right;
+    padding: 5px;
+  }
+  .task-details {
+    .manage-controls a {
+      cursor: pointer;
+      margin-right: 12px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 100px;
+      box-sizing: border-box;
+    }
+  }
+  .task-list {
+    overflow-x: hidden;
+    .progress {
+      margin-bottom: 0;
+    }
+    padding-left: 20px;
+    i {
+      margin-right: 5px;
+    }
+  }
+  .task-list-main-warp i {
+    font-size: 16px;
+    vertical-align: baseline;
+  }
+  ul.failed-info-list {
+    max-height: 500px;
+    margin-top: 5px;
+  }
+  .pause-button {
+    margin-top: -5px;
+    i {
+      padding-right: 4px;
+      font-size: 15px;
+    }
+  }
+  .active-task-label {
+    padding: 8px 15px;
+    display: inline-block;
+  }
+  .upgrade-groups {
+    padding-left: 0;
+    .progress {
+      width: 85%;
+      display: inline-block;
+    }
+    .percent {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+.upgrade-options-link {
+  cursor: pointer;
+  display: inline-block;
+  padding-left: 20px;
+  vertical-align: bottom;
+  a {
+    font-size: 14px;
+    font-weight: normal;
+  }
+  .icon-cogs {
+    font-size: 16px;
+    color: #0088cc;
+    margin-right: 3px;
+  }
+}
+.upgrade-options-link.disabled {
+  cursor: not-allowed;
+  a, .icon-cogs {
+    color: #808080;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.repository-list {
+  .os-block {
+    border-top: 1px solid #dddddd;
+    padding-top: 10px;
+  }
+  input[type="text"] {
+    width: 80%;
+  }
+}
+
+#upgrade-options-popup-content {
+  .method-options {
+    margin: 10px;
+    .method-option {
+      width: 43.5%;
+      margin-bottom: 5px;
+    }
+    .thumbnail {
+      background-color: #e4e4e4;
+      .method-name,.method-icon,.method-description {
+        color: #333333;
+      }
+
+      cursor: pointer;
+      border: none;
+      width: 99%;
+      .method-icon {
+        font-size: 40px;
+      }
+      .method-name {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 2px;
+      }
+      .method-description {
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+
+    .ROLLING {
+      .method-icon {
+        margin-left: 88px;
+      }
+    }
+    .NON_ROLLING {
+      .method-icon {
+        margin-left: 94px;
+      }
+    }
+    .selected.ROLLING, .selected.NON_ROLLING {
+      background-color: #d3e7ca;
+      box-shadow: 0 8px 6px -6px #b3b3b3;
+    }
+    .ROLLING:hover, .NON_ROLLING:hover {
+      background-color: #cbe3c2;
+    }
+
+    .thumbnail.not-allowed:hover {
+      background-color: #e4e4e4;
+    }
+    .thumbnail.not-allowed {
+      cursor: not-allowed;
+      &.default-cursor{
+        cursor: default;
+      }
+    }
+  }
+
+  .method-options.disabled {
+    .thumbnail {
+      cursor: not-allowed;
+      .method-name,.method-icon,.method-description {
+        color: #a9a9a9;
+      }
+    }
+    .ROLLING,.NON_ROLLING,
+    .ROLLING:hover,.NON_ROLLING:hover {
+      background-color: #f3f3f3;
+    }
+    .selected.ROLLING,.selected.NON_ROLLING,
+    .selected.ROLLING:hover,.selected.NON_ROLLING:hover {
+      border: solid 2px #a9a9a9;
+      box-shadow: 0 8px 6px -6px #a9a9a9;
+    }
+  }
+
+  .method-precheck-message {
+    a {
+      cursor: pointer;
+    }
+    text-align: center;
+    padding-top: 10px;
+    font-size: 13px;
+    &.checking {
+      padding-top: 5px;
+      line-height: @spinner-small-height;
+      .spinner {
+        display: inline-block;
+        width: auto;
+        height: @spinner-small-height;
+        padding-left: @spinner-small-width + 4px;
+        i {
+          font-size: 1em;
+        }
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+  .method-precheck-message.GREEN {
+    .icon-ok {
+      color: @health-status-green;
+      font-size: 16px;
+    }
+  }
+  .method-precheck-message.RED {
+    .icon-remove {
+      color: #cf2a27;
+      font-size: 16px;
+    }
+  }
+  .method-precheck-message.ORANGE {
+    .icon-warning-sign {
+      color: @health-status-orange;
+      font-size: 16px;
+    }
+  }
+  .tolerance-text .tolerance-option {
+    margin: 5px 15px;
+    .ember-checkbox {
+      margin-top: 0;
+    }
+  }
+  .text {
+    margin-left: 10px;
+  }
+  .icon-question-sign {
+    color: @blue;
+  }
+}
+
+.admin-cluster {
+  .repositories-table {
+    margin-bottom: 10px;
+    border: 1px solid #dddddd;
+    overflow: auto;
+    div {
+      float: left;
+      min-height: 1px;
+    }
+    .thead {
+      width: 100%;
+      .th {
+        font-weight: bold;
+        padding: 8px;
+      }
+      .os-th {
+        width: 10%;
+      }
+      .name-th {
+        width: 16%;
+      }
+      .url-th {
+        width: 66%;
+      }
+    }
+    .tbody {
+      width: 100%;
+      .trow {
+        width: 100%;
+        border-top: 1px solid #dddddd;
+        padding-top: 8px;
+        .os-td {
+          padding-top: 4px;
+          padding-left: 8px;
+          width: 9%;
+        }
+        .sub-trow {
+          width: 100%;
+          min-height: 39px;
+          .name-td {
+            width: 16%;
+            padding-top: 4px;
+          }
+          .url-td {
+            width: 60%;
+            .ember-text-field {
+              width: 100%;
+              margin: -1px -1px -1px -2px;
+            }
+          }
+          .url-text-td {
+            width: 70%;
+            padding-top: 4px;
+            padding-left: 3px;
+            overflow: auto;
+          }
+          .edit-td {
+            width: 8%;
+            padding-top: 4px;
+            padding-left: 5px;
+            a {
+              cursor: pointer;
+            }
+          }
+          .edit-buttons-td {
+            // save or cancel
+            width: 9%;
+          }
+          .clear-td {
+            width: 3%;
+            padding-top: 5px;
+            padding-left: 12px;
+            a {
+              cursor: pointer;
+              text-decoration: none;
+            }
+            .icon-remove-sign {
+              color: #808080;
+            }
+          }
+        }
+      }
+    }
+    .textfield-error input {
+      border-color: #b94a48;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+    .disabled-textfield input {
+      color: #808080;
+      disabled: disabled;
+      pointer-events: none;
+      cursor: default;
+      background: #E4E4E4;
+    }
+    .disabled-label {
+      color: #808080;
+    }
+  }
+  #skip-validation {
+    margin-top: 10px;
+    .checkbox {
+      margin-left: 3px;
+      margin-right: 8px;
+      margin-top: 0;
+    }
+  }
+}
+
+#skip-validation,
+#use-redhat {
+  .icon-question-sign {
+    color: @blue;
+  }
+}
+
+#upgrade-failed-hosts {
+  .host-list-container {
+    overflow-y: auto;
+    max-height: 320px;
+    margin-right: -15px;
+    .accordion {
+      margin-bottom: 0;
+      .accordion-group {
+        border: none;
+        .accordion-toggle {
+          line-height: 20px;
+          padding: 5px 0;
+          .label {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+  .sub-header {
+    padding: 0 15px;
+    width: 530px;
+    margin-left: -15px;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+#upgrade-summary-table {
+  & > tbody > tr {
+    cursor: pointer;
+  }
+  .wide-column {
+    width: 14%;
+  }
+  .widest-column{
+    width: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .accordion-group {
+    border-right: none;
+    border-bottom: none;
+  }
+  .accordion-inner {
+    border-top: none;
+    padding-left: 0;
+    padding-top: 20px;
+  }
+  .accordion-heading {
+    background-color: transparent;
+  }
+  .accordion-toggle {
+    padding: 5px;
+    display: inline-block;
+    float: left;
+    line-height: 10px;
+    margin-left: -20px;
+  }
+  .accordion-body {
+    min-width: 350px;
+    .service-name {
+      text-align: left;
+      min-width: 95px;
+    }
+  }
+}

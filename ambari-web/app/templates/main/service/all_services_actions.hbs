@@ -1,0 +1,73 @@
+{{!
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+}}
+
+{{#isAuthorized "SERVICE.START_STOP, SERVICE.ADD_DELETE_SERVICES"}}
+    <div class="service-button" style="margin-top: 10px;">
+        <div class="btn-group display-inline-block span11 offset1">
+            <a class="btn dropdown-toggle span10" data-toggle="dropdown" href="#">{{t common.actions}}
+                <span class="caret"></span>
+            </a>
+            <ul class="pull-left dropdown-menu">
+                {{#isAuthorized "SERVICE.ADD_DELETE_SERVICES"}}
+                    {{#if App.supports.enableAddDeleteServices}}
+                        <li {{bindAttr class="view.serviceController.isAllServicesInstalled:disabled :add-service-button"}}>
+                            <a href="#"
+                                {{bindAttr class="view.serviceController.isAllServicesInstalled:disabled"}}
+                                {{action gotoAddService target="view.serviceController"}}>
+                                <i class="icon-plus icon-white"></i> {{t services.service.add}}</a>
+                        </li>
+                    {{/if}}
+                {{/isAuthorized}}
+                {{#isAuthorized "SERVICE.START_STOP"}}
+                    <li class="divider"></li>
+                    <li {{bindAttr class="view.serviceController.isStartAllDisabled:disabled" }}>
+                        <a href="#" data-toggle="modal"
+                            {{bindAttr class="view.serviceController.isStartAllDisabled:disabled" }}
+                            {{action "startAllService" target="view.serviceController"}}>
+                            <i {{bindAttr class=":icon-play view.serviceController.isStartAllDisabled:disabled:enabled " }}></i>
+                            {{t services.service.startAll}}
+                        </a>
+                    </li>
+                    <li {{bindAttr class="view.serviceController.isStopAllDisabled:disabled" }}>
+                        <a href="#" data-toggle="modal"
+                            {{bindAttr class="view.serviceController.isStopAllDisabled:disabled" }}
+                            {{action "stopAllService" target="view.serviceController"}}>
+                            <i {{bindAttr class=":icon-stop view.serviceController.isStopAllDisabled:disabled:enabled" }}></i>
+                            {{t services.service.stopAll}}
+                        </a>
+                    </li>
+                    <li {{bindAttr class="view.serviceController.isRestartAllRequiredDisabled:disabled" }}>
+                        <a href="#" data-toggle="modal"
+                            {{bindAttr class="view.serviceController.isRestartAllRequiredDisabled:disabled" }}
+                            {{action "restartAllRequired" target="view.serviceController"}}>
+                            <i {{bindAttr class=":icon-repeat view.serviceController.isRestartAllRequiredDisabled:disabled:enabled" }}></i>
+                            {{t services.service.restartAllRequired}}
+                        </a>
+                    </li>
+                {{/isAuthorized}}
+                <li>
+                    <a href="#" id="all-clients-of-cluster-link"
+                        {{action "downloadAllClientConfigs" target="view.serviceController"}}>
+                        <i {{bindAttr class=":icon-download-alt"}}></i>
+                        {{t services.service.downloadAllClientConfigs}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{{/isAuthorized}}
