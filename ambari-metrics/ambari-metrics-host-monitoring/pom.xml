@@ -211,7 +211,7 @@
         <envClassifier>linux</envClassifier>
         <dirsep>/</dirsep>
         <pathsep>:</pathsep>
-        <executable.python>${project.parent.basedir}/../ambari-common/src/main/unix/ambari-python-wrap</executable.python>
+        <executable.python>${project.basedir}/../../ambari-common/src/main/unix/ambari-python-wrap</executable.python>
         <executable.shell>sh</executable.shell>
         <fileextension.shell>sh</fileextension.shell>
         <fileextension.dot.shell-default></fileextension.dot.shell-default>
