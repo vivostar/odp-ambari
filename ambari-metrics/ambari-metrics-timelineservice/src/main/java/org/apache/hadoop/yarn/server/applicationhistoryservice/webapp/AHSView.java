@@ -29,6 +29,7 @@ import static org.apache.hadoop.yarn.webapp.view.JQueryUI.tableInit;
 
 import org.apache.hadoop.yarn.server.webapp.AppsBlock;
 import org.apache.hadoop.yarn.webapp.SubView;
+import org.apache.hadoop.yarn.webapp.hamlet2.Hamlet;
 import org.apache.hadoop.yarn.webapp.view.TwoColumnLayout;
 
 // Do NOT rename/refactor this to AHSView as it will wreak havoc
@@ -38,7 +39,7 @@ public class AHSView extends TwoColumnLayout {
   static final int MAX_FAST_ROWS = 1000; // inline js array
 
   @Override
-  protected void preHead(Page.HTML<_> html) {
+  protected void preHead(Hamlet.HTML<__> html) {
     commonPreHead(html);
     set(DATATABLES_ID, "apps");
     set(initID(DATATABLES, "apps"), appsTableInit());
@@ -50,7 +51,7 @@ public class AHSView extends TwoColumnLayout {
     setTitle(sjoin(reqState, "Applications"));
   }
 
-  protected void commonPreHead(Page.HTML<_> html) {
+  protected void commonPreHead(Hamlet.HTML<__> html) {
     set(ACCORDION_ID, "nav");
     set(initID(ACCORDION, "nav"), "{autoHeight:false, active:0}");
   }

@@ -23,6 +23,7 @@ import junit.framework.Assert;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Durability;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.metrics2.sink.timeline.ContainerMetric;
@@ -326,7 +327,7 @@ public class ITPhoenixHBaseAccessor extends AbstractMiniHBaseClusterTest {
     String precisionTtl = "";
     // Verify policies are unset
     for (String tableName : PHOENIX_TABLES) {
-      HTableDescriptor tableDescriptor = hBaseAdmin.getTableDescriptor(tableName.getBytes());
+      HTableDescriptor tableDescriptor = hBaseAdmin.getTableDescriptor(TableName.valueOf(tableName.getBytes()));
       tableDescriptor.setNormalizationEnabled(true);
       Assert.assertTrue("Normalizer enabled.", tableDescriptor.isNormalizationEnabled());
 
@@ -358,7 +359,7 @@ public class ITPhoenixHBaseAccessor extends AbstractMiniHBaseClusterTest {
     for (int i = 0; i < 10; i++) {
       LOG.warn("Policy check retry : " + i);
       for (String tableName : PHOENIX_TABLES) {
-        HTableDescriptor tableDescriptor = hBaseAdmin.getTableDescriptor(tableName.getBytes());
+        HTableDescriptor tableDescriptor = hBaseAdmin.getTableDescriptor(TableName.valueOf(tableName.getBytes()));
         normalizerEnabled = tableDescriptor.isNormalizationEnabled();
         tableDurabilitySet = (Durability.ASYNC_WAL.equals(tableDescriptor.getDurability()));
         if (tableName.equals(METRICS_RECORD_TABLE_NAME)) {

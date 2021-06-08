@@ -22,6 +22,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HConstants;
 import org.apache.hadoop.hbase.IntegrationTestingUtility;
+import org.apache.hadoop.hbase.client.Admin;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetric;
 import org.apache.hadoop.metrics2.sink.timeline.TimelineMetrics;
@@ -86,7 +87,7 @@ public abstract class AbstractMiniHBaseClusterTest extends BaseTest {
   @AfterClass
   public static void doTeardown() throws Exception {
     dropNonSystemTables();
-    tearDownMiniCluster();
+    tearDownMiniCluster(3);
   }
 
   @Before
@@ -208,7 +209,7 @@ public abstract class AbstractMiniHBaseClusterTest extends BaseTest {
           @Override
           public HBaseAdmin getHBaseAdmin() throws IOException {
             try {
-              return driver.getConnectionQueryServices(null, null).getAdmin();
+              return (HBaseAdmin) driver.getConnectionQueryServices(null, null).getAdmin();
             } catch (SQLException e) {
               LOG.error(e);
             }

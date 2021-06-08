@@ -21,6 +21,7 @@ import static org.apache.hadoop.yarn.webapp.YarnWebParams.CONTAINER_ID;
 import static org.apache.hadoop.yarn.webapp.YarnWebParams.ENTITY_STRING;
 
 import org.apache.hadoop.yarn.webapp.SubView;
+import org.apache.hadoop.yarn.webapp.hamlet2.Hamlet;
 import org.apache.hadoop.yarn.webapp.log.AggregatedLogsBlock;
 
 public class AHSLogsPage extends AHSView {
@@ -32,7 +33,7 @@ public class AHSLogsPage extends AHSView {
    * preHead(org.apache.hadoop .yarn.webapp.hamlet.Hamlet.HTML)
    */
   @Override
-  protected void preHead(Page.HTML<_> html) {
+  protected void preHead(Hamlet.HTML<__> html) {
     String logEntity = $(ENTITY_STRING);
     if (logEntity == null || logEntity.isEmpty()) {
       logEntity = $(CONTAINER_ID);

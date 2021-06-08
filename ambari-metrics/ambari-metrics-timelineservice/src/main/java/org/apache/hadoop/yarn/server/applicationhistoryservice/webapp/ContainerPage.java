@@ -22,11 +22,12 @@ import static org.apache.hadoop.yarn.util.StringHelper.join;
 import org.apache.hadoop.yarn.server.webapp.ContainerBlock;
 import org.apache.hadoop.yarn.webapp.SubView;
 import org.apache.hadoop.yarn.webapp.YarnWebParams;
+import org.apache.hadoop.yarn.webapp.hamlet2.Hamlet;
 
 public class ContainerPage extends AHSView {
 
   @Override
-  protected void preHead(Page.HTML<_> html) {
+  protected void preHead(Hamlet.HTML<__> html) {
     commonPreHead(html);
 
     String containerId = $(YarnWebParams.CONTAINER_ID);

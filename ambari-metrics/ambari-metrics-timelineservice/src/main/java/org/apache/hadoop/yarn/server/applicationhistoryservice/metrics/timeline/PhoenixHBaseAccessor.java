@@ -26,6 +26,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.DoNotRetryIOException;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
+import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.Durability;
 import org.apache.hadoop.hbase.client.HBaseAdmin;
 import org.apache.hadoop.hbase.util.RetryCounter;
@@ -531,7 +532,7 @@ public class PhoenixHBaseAccessor {
       for (String tableName : PHOENIX_TABLES) {
         try {
           boolean modifyTable = false;
-          HTableDescriptor tableDescriptor = hBaseAdmin.getTableDescriptor(tableName.getBytes());
+          HTableDescriptor tableDescriptor = hBaseAdmin.getTableDescriptor(TableName.valueOf(tableName.getBytes()));
 
           //Set normalizer preferences
           boolean enableNormalizer = hbaseConf.getBoolean("hbase.normalizer.enabled", false);
@@ -567,7 +568,7 @@ public class PhoenixHBaseAccessor {
 
           // Persist only if anything changed
           if (modifyTable) {
-            hBaseAdmin.modifyTable(tableName.getBytes(), tableDescriptor);
+            hBaseAdmin.modifyTable(TableName.valueOf(tableName.getBytes()), tableDescriptor);
           }
 
         } catch (IOException e) {

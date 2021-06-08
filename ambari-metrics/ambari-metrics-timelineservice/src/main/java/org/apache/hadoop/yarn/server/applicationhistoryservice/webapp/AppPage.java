@@ -27,11 +27,12 @@ import static org.apache.hadoop.yarn.webapp.view.JQueryUI.tableInit;
 import org.apache.hadoop.yarn.server.webapp.AppBlock;
 import org.apache.hadoop.yarn.webapp.SubView;
 import org.apache.hadoop.yarn.webapp.YarnWebParams;
+import org.apache.hadoop.yarn.webapp.hamlet2.Hamlet;
 
 public class AppPage extends AHSView {
 
   @Override
-  protected void preHead(Page.HTML<_> html) {
+  protected void preHead(Hamlet.HTML<__> html) {
     commonPreHead(html);
 
     String appId = $(YarnWebParams.APPLICATION_ID);

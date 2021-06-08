@@ -139,11 +139,28 @@ public class ApplicationHistoryManagerImpl extends AbstractService implements
       host = lastAttempt.getHost();
       rpcPort = lastAttempt.getRPCPort();
     }
-    return ApplicationReport.newInstance(appHistory.getApplicationId(),
-      currentApplicationAttemptId, appHistory.getUser(), appHistory.getQueue(),
-      appHistory.getApplicationName(), host, rpcPort, null,
-      appHistory.getYarnApplicationState(), appHistory.getDiagnosticsInfo(),
-      trackingUrl, appHistory.getStartTime(), appHistory.getFinishTime(),
+
+ //   newInstance(ApplicationId applicationId,
+    //   ApplicationAttemptId applicationAttemptId,
+    //   String user, String queue, String name,
+    //   String host, int rpcPort, Token clientToAMToken,
+    //   YarnApplicationState state,
+    //   String diagnostics, String url, long startTime, long submitTime, long launchTime, long finishTime, FinalApplicationStatus finalStatus, ApplicationResourceUsageReport appResources, String origTrackingUrl, float progress, String applicationType, Token amRmToken)
+    return ApplicationReport.newInstance(
+            appHistory.getApplicationId(),
+            currentApplicationAttemptId,
+            appHistory.getUser(),
+            appHistory.getQueue(),
+            appHistory.getApplicationName(),
+            host,
+            rpcPort, null,
+            appHistory.getYarnApplicationState(),
+            appHistory.getDiagnosticsInfo(),
+            trackingUrl,
+            appHistory.getStartTime(),
+            //new api update
+            appHistory.getSubmitTime(),
+            appHistory.getFinishTime(),
       appHistory.getFinalApplicationStatus(), null, "", 100,
       appHistory.getApplicationType(), null);
   }
