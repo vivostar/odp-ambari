@@ -283,7 +283,7 @@
               </sources>
             </mapping>
             <mapping>
-              <directory>/usr/lib/python2.6/site-packages</directory>
+              <directory>/usr/lib/python2.7/site-packages</directory>
               <filemode>755</filemode>
               <username>root</username>
               <groupname>root</groupname>
