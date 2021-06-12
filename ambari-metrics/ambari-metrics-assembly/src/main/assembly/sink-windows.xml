@@ -38,10 +38,12 @@
       <directory>${storm-sink.dir}/src/main/conf</directory>
       <outputDirectory>hadoop-sink/conf</outputDirectory>
     </fileSet>
+    <!--
     <fileSet>
       <directory>${storm-sink-legacy.dir}/src/main/conf</directory>
       <outputDirectory>hadoop-sink/conf</outputDirectory>
     </fileSet>
+    -->
     <fileSet>
       <directory>${kafka-sink.dir}/target/lib</directory>
       <outputDirectory>hadoop-sink/lib</outputDirectory>
